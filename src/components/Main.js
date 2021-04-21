@@ -3,8 +3,10 @@ import {Switch, Route} from "react-router-dom";
 import RenderPosts from "./RenderPosts/RenderPosts";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {getUser} from "../action/actionPaginGet";
+import {getUser} from "../action/actionGetPosts";
 import ErrorPage from "./ErrorPage/ErrorPage";
+import RenderByName from "./RenderByName/RenderByName";
+import NewPost from "./NewPost/NewPost";
 
 
 
@@ -22,6 +24,8 @@ const Main = ({getUser}) => {
         <div>
                 <Switch>
                      <Route path={['/', '/posts']} exact  component={RenderPosts}/>
+                    <Route path= {`/name/:hero`} exact component={RenderByName}/>
+                    <Route path={`/create-new-post`} exact component={NewPost}/>
                      <Route><ErrorPage/></Route>
                 </Switch>
         </div>

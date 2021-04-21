@@ -1,4 +1,4 @@
-import { PUT} from "../action/actionPaginGet";
+import { PUT} from "../action/actionGetPosts";
 
 
 

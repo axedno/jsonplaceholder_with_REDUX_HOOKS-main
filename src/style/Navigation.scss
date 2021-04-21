@@ -1,0 +1,19 @@
+.navigation{
+  &__input{
+    display: block;
+    margin: 50px auto 0 auto;
+    border: 1px solid red;
+    border-radius: 3px;
+    outline: none;
+    height: 44px;
+    width: 240px;
+    font-size: 15px;
+
+  }
+  &__btn{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin: 20px auto 0 auto;
+  }
+}

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {connect, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import Task from "./RenderPost/RenderPost";
 import styled from 'styled-components';
 import ReactPaginate from 'react-paginate';
+import Navigation from "./RenderPost/Navigation/Navigation";
 
 const Blocks = styled.div`
         display: flex;
@@ -17,7 +18,6 @@ const Body = styled.p`
         padding-top: 30px;
          height: 120px;
 `
-
 
 
 
@@ -59,6 +59,7 @@ const RenderPosts = () => {
 
     return (
         <div>
+            <Navigation/>
             <Blocks>
                 {render}
             </Blocks>
