@@ -3,6 +3,10 @@ import {editTask} from "../../../action/actionEdit";
 import {connect} from "react-redux";
 import styled from "styled-components";
 import {Button} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {bindActionCreators} from "redux";
+import {Delete} from "../../../action/actionDelete";
+import {Check} from "../../../action/actionComments";
 
 
 
@@ -46,12 +50,20 @@ const Task = props => {
         setValue1(prevState => ({...prevState, [fild]: value }))
     }
 
+
+
+
+
     const returnNorm = () => {
         return (
             <Block>
                 <div>{props.children}</div>
                 <BTNPost>
+                    <Link to={`/comments/${props.children[1].props.children}`}>
+                        <Button   onClick={() =>  props.Check(props.children[1].props.children)} variant="success" >Comments</Button>
+                    </Link>
                     <Button onClick={() => setIsEdit(true)} variant="secondary" >Edit</Button>
+                    <Button onClick={() => props.Delete(props.children[1].props.children)} variant="primary">Delete</Button>
                 </BTNPost>
             </Block>
         );
@@ -78,10 +90,11 @@ const Task = props => {
 
 }
 
-export const mapDispatchToProps = dispatch => {
-    return {
-        editTask: (index, text) => dispatch(editTask(index, text)),
-    }
+
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({editTask, Delete, Check}, dispatch)
 }
+
 
 export default connect(null, mapDispatchToProps)(Task);

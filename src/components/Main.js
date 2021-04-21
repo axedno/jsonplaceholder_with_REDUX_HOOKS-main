@@ -7,10 +7,12 @@ import {getUser} from "../action/actionGetPosts";
 import ErrorPage from "./ErrorPage/ErrorPage";
 import RenderByName from "./RenderByName/RenderByName";
 import NewPost from "./NewPost/NewPost";
+import Comments from "./Comments/Comments";
+import {getComments} from "../action/actionComments";
 
 
 
-const Main = ({getUser}) => {
+const Main = ({getUser, getComments}) => {
 
 
     useEffect(() => {
@@ -18,14 +20,19 @@ const Main = ({getUser}) => {
     }, [])
 
 
+    useEffect(() => {
+        getComments();
+    }, [])
+
 
 
     return (
         <div>
                 <Switch>
-                     <Route path={['/', '/posts']} exact  component={RenderPosts}/>
+                    <Route path={['/', '/posts']} exact  component={RenderPosts}/>
                     <Route path= {`/name/:hero`} exact component={RenderByName}/>
                     <Route path={`/create-new-post`} exact component={NewPost}/>
+                    <Route path= {`/comments/:numb`} exact component={Comments}/>
                      <Route><ErrorPage/></Route>
                 </Switch>
         </div>
@@ -33,7 +40,7 @@ const Main = ({getUser}) => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({getUser}, dispatch)
+    return bindActionCreators({getUser, getComments}, dispatch)
 }
 
 
